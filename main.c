@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "function.h"
 
-char gameMap[9]; 
-struct players{
+extern struct players{
 	
 	int wins;	
 	int draws;
@@ -12,32 +11,41 @@ struct players{
 }p1, p2;
 
 
+enum options {PLAY = 1, STATISTICS ,RESET, QUIT};
 
 int main()
 {
 	system("clear");
 	while(1)
 	{
-		int PLAYER_CHOICE;
-		printf("1: start the Game... \n2: For Status... \n3: quit...\nChoose an option: ");
-		scanf("%d", &PLAYER_CHOICE);
+		int PLAYER_CHOICE[2];
+		printf(   "1: Start the Game..."
+			"\n2: For Status..."
+		       	"\n3: Reset game status"
+			"\n4: quit..."
+			"\nChoose an option: ");
+		input(PLAYER_CHOICE, 1);
 		
-		switch(PLAYER_CHOICE)
+		switch(PLAYER_CHOICE[0])
 		{
-			case 1:
+			case PLAY:
 				game();
 				break;
 
-			case 2:
+			case STATISTICS:
 				statistics();
 				break;	
 			
-			case 3:
+			case RESET:
+				game_reset();
+				break;
+
+			case QUIT:
 				return 0;
 
 			default:
-				printf("choose a number from that list");
+				system("clear");
+				printf("choose character from list\n\n");
 		}	
 	}
-	return 0;
 }
