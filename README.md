@@ -12,6 +12,6 @@ git clone https://github.com/idrax-1/ticTacToe
 
 cd ticTacToe
 
-gcc main.c function.c
+gcc main.c function.c -o ticTacToe
 
-مع السلامة
+./ticTacToe
